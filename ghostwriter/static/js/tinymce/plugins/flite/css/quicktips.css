@@ -1,0 +1,273 @@
+:root {
+  --qt-animation-duration: .3s;
+}
+
+.quicktips-tooltip {
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 2147483647;
+}
+
+.quicktips-box {
+  background-color: #2A2A2A;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15), 0 0 10px rgba(255, 255, 255, 0.15);
+  color: #F7F7F7;
+  cursor: default;
+  font-family: arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.quicktips-box:before {
+  background-color: inherit;
+  box-shadow: inherit;
+  content: '';
+  display: block;
+  height: 12px;
+  position: absolute;
+  width: 12px;
+  transform: translate3d(-6px, -6px, 0) rotate3d(0, 0, 1, 45deg);
+  left: 10px;
+  top: 10px;
+}
+
+.quicktips-text {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  background-color: inherit;
+  border-radius: inherit;
+  color: inherit;
+  padding: 5px 8px;
+  position: relative;
+}
+
+.quicktips-text a {
+  color: inherit;
+}
+
+.quicktips-more {
+  background-color: inherit;
+  border-radius: inherit;
+  position: relative;
+}
+
+.quicktips-more .quicktips-text {
+  margin-top: -8px;
+}
+
+.quicktip-position-bottom .quicktips-box:before {
+  left: 50%;
+  top: 0px;
+}
+
+.quicktip-position-left .quicktips-box:before {
+  left: 100%;
+  top: 50%;
+}
+
+.quicktip-position-right .quicktips-box:before {
+  left: 0;
+  top: 50%;
+}
+
+.quicktip-position-top .quicktips-box:before {
+  left: 50%;
+  top: 100%;
+}
+
+.quicktip-tooltip {
+  perspective: 300px;
+}
+
+.quicktip-tooltip.animating {
+  transition: top var(--qt-animation-duration);
+}
+
+.quicktips-box.animating,
+.quicktip-more.animating {
+  transition: opacity var(--qt-animation-duration), transform var(--qt-animation-duration);
+}
+
+/* Fadein */
+.fadein-from {
+  opacity: 0;
+}
+
+.fadein-to {
+  opacity: 1;
+}
+
+/* Scalein */
+.scalein-from {
+  opacity: 0;
+  transform: scale3d(0.7, 0.7, 0.7);
+}
+
+.scalein-to {
+  opacity: 1;
+  transform: scale3d(1, 1, 1);
+}
+
+.quicktip-position-bottom .scalein-to {
+  transform-origin: center top;
+}
+
+.quicktip-position-left .scalein-to {
+  transform-origin: right center;
+}
+
+.quicktip-position-right .scalein-to {
+  transform-origin: left center;
+}
+
+.quicktip-position-top .scalein-to {
+  transform-origin: center bottom;
+}
+
+/* Fold */
+.foldin-from,
+.foldout-from {
+  opacity: 0;
+}
+
+.foldin-to,
+.foldout-to {
+  opacity: 1;
+  transform: rotate3d(0, 0, 0, 0);
+}
+
+.quicktip-position-bottom .foldin-from,
+.quicktip-position-top .foldout-from {
+  transform: rotate3d(1, 0, 0, -90deg);
+}
+
+.quicktip-position-bottom .foldin-to,
+.quicktip-position-bottom .foldout-to {
+  transform-origin: center top;
+}
+
+.quicktip-position-left .foldin-from,
+.quicktip-position-right .foldout-from {
+  transform: rotate3d(0, 1, 0, -90deg);
+}
+
+.quicktip-position-left .foldin-to,
+.quicktip-position-left .foldout-to {
+  transform-origin: right center;
+}
+
+.quicktip-position-right .foldin-from,
+.quicktip-position-left .foldout-from {
+  transform: rotate3d(0, 1, 0, 90deg);
+}
+
+.quicktip-position-right .foldin-to,
+.quicktip-position-right .foldout-to {
+  transform-origin: left center;
+}
+
+.quicktip-position-top .foldin-from,
+.quicktip-position-bottom .foldout-from {
+  transform: rotate3d(1, 0, 0, 90deg);
+}
+
+.quicktip-position-top .foldin-to,
+.quicktip-position-top .foldout-to {
+  transform-origin: center bottom;
+}
+
+/* Slidein */
+.slidein-from {
+  opacity: 0;
+}
+
+.slidein-to {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.quicktip-position-bottom .slidein-from {
+  transform: translate3d(0, 20px, 0);
+}
+
+.quicktip-position-left .slidein-from {
+  transform: translate3d(-20px, 0, 0);
+}
+
+.quicktip-position-right .slidein-from {
+  transform: translate3d(20px, 0, 0);
+}
+
+.quicktip-position-top .slidein-from {
+  transform: translate3d(0, -20px, 0);
+}
+
+/* Roll */
+.roll-from {
+  opacity: 0;
+}
+
+.roll-to {
+  opacity: 1;
+  transform: rotate3d(0, 0, 0, 0);
+}
+
+.quicktip-position-bottom .roll-from {
+  transform: rotate3d(0, 0, 1, -30deg);
+}
+
+.quicktip-position-bottom .roll-to {
+  transform-origin: center top;
+}
+
+.quicktip-position-left .roll-from {
+  transform: rotate3d(0, 0, 1, 30deg);
+}
+
+.quicktip-position-left .roll-to {
+  transform-origin: right center;
+}
+
+.quicktip-position-right .roll-from {
+  transform: rotate3d(0, 0, 1, -30deg);
+}
+
+.quicktip-position-right .roll-to {
+  transform-origin: left center;
+}
+
+.quicktip-position-top .roll-from {
+  transform: rotate3d(0, 0, 1, 30deg);
+}
+
+.quicktip-position-top .roll-to {
+  transform-origin: center bottom;
+}
+
+/* Spin */
+.spin-from {
+  opacity: 0;
+}
+
+.spin-to {
+  opacity: 1;
+  transform: rotate3d(0, 0, 0, 0) translate3d(0, 0, 0);
+}
+
+.quicktip-position-bottom .spin-from {
+  transform: rotate3d(0, 1, 0, 90deg) translate3d(0, 20px, 0);
+}
+
+.quicktip-position-left .spin-from {
+  transform: rotate3d(1, 0, 0, -90deg) translate3d(-20px, 0, 0);
+}
+
+.quicktip-position-right .spin-from {
+  transform: rotate3d(1, 0, 0, -90deg) translate3d(20px, 0, 0);
+}
+
+.quicktip-position-top .spin-from {
+  transform: rotate3d(0, 1, 0, 90deg) translate3d(0, -20px, 0);
+}

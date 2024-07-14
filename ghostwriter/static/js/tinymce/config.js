@@ -47,8 +47,8 @@
         max_height: window_height - 250,
         autoresize_bottom_margin: 10,
         toolbar_mode: 'floating',
-        plugins: 'searchreplace autoresize visualchars visualblocks save preview lists image hr autosave advlist code wordcount codesample searchreplace paste link case table pagebreak',
-        toolbar: 'subscript superscript bold italic underline link blockquote case highlight | bullist numlist | codesample codeInline | table tablerowheader | evidenceUpload | searchreplace removeformat save | editorsHints',
+        plugins: 'searchreplace autoresize visualchars visualblocks save preview lists image hr autosave advlist code wordcount codesample searchreplace paste link case table pagebreak flite',
+        toolbar: 'subscript superscript bold italic underline link blockquote case highlight | bullist numlist | codesample codeInline | table tablerowheader | evidenceUpload | searchreplace removeformat save | editorsHints | flite',
         contextmenu: 'table formats bold italic underline link removeformat',
         paste_as_text: true,
         paste_data_images: false,
@@ -161,6 +161,18 @@
         table_default_styles: {'border-collapse': 'collapse', 'width': '100%', 'border-style': 'solid', 'border-width': '1px'},
         table_default_attributes: {class: 'table table-sm table-striped table-bordered'},
         table_header_type: 'sectionCells',
+        flite: {
+            isTracking: false,
+            user: null,
+            tooltips: {
+                formatter: function(props) {
+                    var type = props.localize(props.isInsert ? 'CHANGE_TYPE_ADDED' : 'CHANGE_TYPE_DELETED');
+                    var by = props.localize('BY');
+
+                    return [type, by, props.change.username].join(' ');
+                }
+            }
+        },
     };
 
     // TinyMCE config for most fields

@@ -74,6 +74,32 @@
 
         <h6 class="row justify-content-md-center">
           <span class="col-3 text-left">
+            Track Changes:
+            {% if report.delivered %}
+              <span id="js-delivery-status">Enabled</span>
+            {% else %}
+              <span id="js-delivery-status">Disabled</span>
+            {% endif %}
+          </span>
+          <span class="col-1">
+            {% if report.delivered %}
+              <a title="Disable tracked changes across the report" data-toggle="tooltip" href="javascript:void(0)"
+                 class="clickable-link js-toggle-delivery-status" toggle-delivery-status-csrftoken="{{ csrf_token }}"
+                 toggle-delivery-status-url="{% url 'reporting:ajax_toggle_report_delivery' report.id %}"
+                 toggle-delivery-status-id="{{ report.id }}"><i id="js-delivery-status-icon"
+                                                                class="fas fa-toggle-on"></i></a>
+            {% else %}
+              <a title="Enable tracked changes across the report" data-toggle="tooltip" href="javascript:void(0)"
+                 class="clickable-link js-toggle-delivery-status" toggle-delivery-status-csrftoken="{{ csrf_token }}"
+                 toggle-delivery-status-url="{% url 'reporting:ajax_toggle_report_delivery' report.id %}"
+                 toggle-delivery-status-id="{{ report.id }}"><i id="js-delivery-status-icon"
+                                                                class="fas fa-toggle-off"></i></a>
+            {% endif %}
+          </span>
+        </h6>
+
+        <h6 class="row justify-content-md-center">
+          <span class="col-3 text-left">
             Report Status:
             {% if report.complete %}
               <span id="js-report-status" class="pl-1">Complete</span>

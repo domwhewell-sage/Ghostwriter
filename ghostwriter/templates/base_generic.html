@@ -652,6 +652,14 @@
       console.error('Global notification WebSocket closed unexpectedly');
     };
   {% endif %}
+
+  {% comment %} Set the current user for the track changes plugin {% endcomment %}
+  {% if user.is_authenticated %}
+    GW_TINYMCE_DEFAULT_CONFIG.flite.user = {
+      id: '{{ user.id }}',
+      name: '{{ user.username }}'
+    }
+  {% endif %}
 </script>
 
 {% comment %} Blocks used by forms that use Bootstrap tabs {% endcomment %}
